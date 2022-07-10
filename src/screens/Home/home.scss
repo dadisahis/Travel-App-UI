@@ -1,2 +1,15 @@
 .home {
+  .home_content {
+    background-color: #ffcc8f;
+    height: 180vh;
+    padding-top: 10px;
+    .carousel_title {
+      position: relative;
+      text-align: center;
+      color: white;
+      top: 40px;
+      font-size: 50px;
+      text-shadow: 2px 2px gray;
+    }
+  }
 }
