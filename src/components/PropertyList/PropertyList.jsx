@@ -2,7 +2,6 @@ import React from "react";
 import "./propertylist.scss";
 
 function PropertyList({ data, title, height, width }) {
-  const size = {};
   return (
     <div className="propertyList">
       <div className="title_container">

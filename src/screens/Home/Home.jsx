@@ -5,6 +5,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import "./home.scss";
 import PropertyList from "../../components/PropertyList/PropertyList";
 import { propertyData, homeData } from "../../dataSource";
+import EmailList from "../../components/EmailList/EmailList";
 function Home() {
   return (
     <div className="home">
@@ -27,6 +28,9 @@ function Home() {
             width={230}
           />
         </div>
+      </div>
+      <div className="home_bottom">
+        <EmailList />
       </div>
     </div>
   );
