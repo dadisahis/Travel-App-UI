@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./screens/Home/Home";
 import List from "./screens/List/List";
-import Item from "./screens/Item/Item";
+import SingleItem from "./screens/SingleItem/SingleItem";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<List />} />
-        <Route path="/hotels/:id" element={<Item />} />
+        <Route path="/hotels/:id" element={<SingleItem />} />
       </Routes>
     </BrowserRouter>
   );

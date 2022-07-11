@@ -1,0 +1,123 @@
+.singleitem {
+  background-color: #ffcc8f;
+  overflow: auto;
+  .singleitem_content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    .singleitem_wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 1024px;
+      padding: 0px 45px;
+      .top_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title_container {
+          .title {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont,
+              "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+              "Helvetica Neue", sans-serif;
+            font-weight: 650;
+            color: white;
+            text-shadow: 2px 2px gray;
+            font-size: 45px;
+          }
+          .location {
+            display: flex;
+            align-items: center;
+            color: gray;
+            font-size: 15px;
+          }
+        }
+        button {
+          height: 40px;
+          width: 200px;
+          border-radius: 5px;
+          border: none;
+          background-color: #1363df;
+          color: white;
+        }
+      }
+      .location_container {
+        margin-top: 10px;
+        width: 50%;
+        p {
+          padding: 5px 5px;
+          color: white;
+          border-radius: 5px;
+          margin: 5px 0px;
+        }
+        .landmark {
+          background-color: #1363df;
+        }
+        .scheme {
+          background-color: #3ec70b;
+        }
+      }
+      .image_container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          height: 250px;
+          width: 335px;
+          margin: 3px;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+      }
+      .bottom_container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        background-color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        .hotel_details {
+          width: 75%;
+        }
+        .hotel_card {
+          background-color: #1365df2b;
+          border-radius: 5px;
+          padding: 10px;
+          width: 25%;
+          height: 200px;
+          margin: 5px 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          p {
+            padding: 5px 0px;
+            color: black;
+          }
+          button {
+            margin: 5px 0px;
+            padding: 5px;
+            height: 40px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            background-color: #1363df;
+            color: white;
+          }
+          .hotel_card_container {
+            .hotel_card_title {
+              font-weight: 700;
+              font-size: 18px;
+            }
+            .hotel_card_description {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

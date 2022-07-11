@@ -1,5 +1,6 @@
 import React from "react";
 import "./searchresultitem.scss";
+import { Link } from "react-router-dom";
 
 function SearchResultItem({ data }) {
   return (
@@ -13,7 +14,12 @@ function SearchResultItem({ data }) {
             <img src={item.image} alt="" />
           </div>
           <div className="searchResult_middle">
-            <p className="title">{item.title}</p>
+            <Link
+              to="/hotels/123"
+              style={{ textDecoration: "none", color: "#1363df" }}
+            >
+              <p className="title">{item.title}</p>
+            </Link>
             <p className="distance">{item.distance}</p>
             <p
               className={

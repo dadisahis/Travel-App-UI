@@ -127,3 +127,41 @@ export const searchResultData = [
     feedback: "Superb",
   },
 ];
+
+export const singleHotelData = {
+  hotel_name: "The Leela",
+  address: "Ambience mall, Gurugram, Harayana, India",
+  landmark: "3 kms from airport",
+  scheme: "Book a stay over 114$ at this property and get free airport taxi",
+  images: [
+    {
+      url: "https://netstorage-legit.akamaized.net/images/48c4acfd9a448740.jpg",
+    },
+    {
+      url: "https://netstorage-legit.akamaized.net/images/48c4acfd9a448740.jpg",
+    },
+    {
+      url: "https://netstorage-legit.akamaized.net/images/48c4acfd9a448740.jpg",
+    },
+    {
+      url: "https://netstorage-legit.akamaized.net/images/48c4acfd9a448740.jpg",
+    },
+    {
+      url: "https://netstorage-legit.akamaized.net/images/48c4acfd9a448740.jpg",
+    },
+    {
+      url: "https://netstorage-legit.akamaized.net/images/48c4acfd9a448740.jpg",
+    },
+  ],
+  hotel: {
+    title: "Stay in the heart of City",
+    description:
+      "Located a 5-minute walk from St. Florian's Gate in Krakow, Tower Street Apartments has accommodations with air conditioning and free WiFi. The units come with hardwood floors and feature a fully equipped kitchenette with a microwave, a flat-screen TV, and a private bathroom with shower and a hairdryer. A fridge is also offered, as well as an electric tea pot and a coffee machine. Popular points of interest near the apartment include Cloth Hall, Main Market Square and Town Hall Tower. The nearest airport is John Paul II International Kraków–Balice, 16.1 km from Tower Street Apartments, and the property offers a paid airport shuttle service.",
+  },
+  features: [
+    "Perfect for a 9-night stay!",
+    "Located in the real heart of Krakow, this property has an excellent location score of 9.8!",
+    "$945 (9 nights)",
+  ],
+  price: "$123",
+};
