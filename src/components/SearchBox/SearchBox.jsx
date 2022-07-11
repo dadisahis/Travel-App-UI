@@ -7,22 +7,8 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useDetectClickOutside } from "../../hooks/useDetectClick";
 function SearchBox() {
-  function useDetectClickOutside(callback, initialValue = null) {
-    const elementRef = useRef(initialValue);
-    useEffect(() => {
-      function handler(event) {
-        if (!elementRef.current?.contains(event.target)) {
-          callback();
-        }
-      }
-      window.addEventListener("click", handler);
-      return () => window.removeEventListener("click", handler);
-    }, [callback]);
-    return elementRef;
-  }
   const dateRef = useDetectClickOutside(() => setOpenDate(false));
   const optionRef = useDetectClickOutside(() => setOpenOptions(false));
   const [date, setDate] = useState([

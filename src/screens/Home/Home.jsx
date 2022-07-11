@@ -9,8 +9,10 @@ import EmailList from "../../components/EmailList/EmailList";
 function Home() {
   return (
     <div className="home">
-      <NavBar />
-      <Header type="home" />
+      <div className="home_top">
+        <NavBar />
+        <Header type="home" />
+      </div>
       <div className="home_content">
         <h1 className="carousel_title">Amazing Places. Amazing Stories.</h1>
         <Carousel />
@@ -27,10 +29,8 @@ function Home() {
             height={180}
             width={230}
           />
+          <EmailList />
         </div>
-      </div>
-      <div className="home_bottom">
-        <EmailList />
       </div>
     </div>
   );

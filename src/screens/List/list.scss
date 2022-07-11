@@ -1,0 +1,22 @@
+.list {
+  background-color: #ffcc8f;
+  overflow: auto;
+  .list_content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .list_wrapper {
+      display: flex;
+      width: 100%;
+      max-width: 1024px;
+      padding: 0px 45px;
+      gap: 10px;
+      .search_component {
+        flex: 1;
+      }
+      .result_component {
+        flex: 3;
+      }
+    }
+  }
+}
