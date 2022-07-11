@@ -4,6 +4,9 @@ import "./searchresultitem.scss";
 function SearchResultItem({ data }) {
   return (
     <div className="searchResultItem">
+      <div className="total_properties">
+        <h1>Dubai: {data.length} properties found</h1>
+      </div>
       {data.map((item) => (
         <div className="searchResultItem_container">
           <div className="searchResult_left">

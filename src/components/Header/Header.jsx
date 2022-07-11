@@ -8,11 +8,12 @@ import HailOutlinedIcon from "@mui/icons-material/HailOutlined";
 import { useState } from "react";
 import "./header.scss";
 import SearchBox from "../SearchBox/SearchBox";
+import { Link } from "react-router-dom";
 function Header({ type }) {
   const navbar__options = [
     {
       id: 1,
-      title: "Stays",
+      title: "Hotels",
       icon: <BedOutlinedIcon />,
       isActive: true,
     },
@@ -61,17 +62,23 @@ function Header({ type }) {
       >
         <div className="header__items">
           {optionData.map((item) => (
-            <div
-              key={item.id}
-              className="header__item"
-              onClick={() => handleActive(item.id)}
+            <Link
+              // to={`/${item.title.toLowerCase()}`}
+              to="/hotels"
+              style={{ textDecoration: "none" }}
             >
-              <NavBarItem
-                title={item.title}
-                Icon={item.icon}
-                isActive={item.isActive}
-              />
-            </div>
+              <div
+                key={item.id}
+                className="header__item"
+                onClick={() => handleActive(item.id)}
+              >
+                <NavBarItem
+                  title={item.title}
+                  Icon={item.icon}
+                  isActive={item.isActive}
+                />
+              </div>
+            </Link>
           ))}
         </div>
         {type === "home" ? (
