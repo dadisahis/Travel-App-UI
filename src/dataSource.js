@@ -23,6 +23,12 @@ export const propertyData = [
     title: "Villas",
     subtitle: "1259 Villa",
   },
+  {
+    image:
+      "https://www.villtravel.com/files/Rhodos/villa_elafina/villa-elafina_1182.jpg",
+    title: "Villas",
+    subtitle: "1259 Villa",
+  },
 ];
 
 export const homeData = [

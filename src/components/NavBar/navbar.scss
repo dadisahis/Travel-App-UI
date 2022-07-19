@@ -1,7 +1,6 @@
 .navbar {
   display: flex;
   justify-content: center;
-  background-color: #a760ff;
   .navbar__container {
     display: flex;
     align-items: center;
@@ -40,7 +39,6 @@
             top: 3px;
           }
           .button {
-            background-color: white;
             color: #a760ff;
             font-size: 14px;
             font-weight: 600;
@@ -48,7 +46,6 @@
             padding: 8px;
             border-radius: 10px;
             &.property {
-              background-color: #a760ff;
               color: white;
               border: 1px solid white;
               padding: 10px;

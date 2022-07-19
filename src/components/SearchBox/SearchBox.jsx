@@ -4,13 +4,20 @@ import KingBedIcon from "@mui/icons-material/KingBed";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PeopleIcon from "@mui/icons-material/People";
 import { DateRange } from "react-date-range";
+import { useNavigate } from "react-router-dom";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useDetectClickOutside } from "../../hooks/useDetectClick";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
 function SearchBox() {
+  const navigate = useNavigate();
   const dateRef = useDetectClickOutside(() => setOpenDate(false));
   const optionRef = useDetectClickOutside(() => setOpenOptions(false));
+  const [destination, setDestination] = useState("");
+  const { dispatch } = useContext(SearchContext);
+
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -46,6 +53,13 @@ function SearchBox() {
       )
     );
   }
+  function handleSearch() {
+    dispatch({
+      type: "NEW_SEARCH",
+      payload: { city: destination, date, options },
+    });
+    navigate("/hotels", { state: { destination, date, options } });
+  }
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
   return (
@@ -56,6 +70,7 @@ function SearchBox() {
           type="text"
           placeholder="Where do you want to go?"
           className="headerSearchInput"
+          onChange={(e) => setDestination(e.target.value)}
         />
       </div>
       <div className="searchboxItem" ref={dateRef}>
@@ -83,6 +98,7 @@ function SearchBox() {
           onClick={() => {
             setOpenOptions(!openOptions);
           }}
+          onChange={(e) => setOptions(e.target.value)}
         >{`${options[0].count} adult | ${options[1].count} children | ${options[2].count} room`}</span>
         {openOptions ? (
           <div className="optionSelector">
@@ -115,7 +131,9 @@ function SearchBox() {
         ) : null}
       </div>
       <div className="searchboxItem">
-        <button className="searchButton">Search</button>
+        <button className="searchButton" onClick={handleSearch}>
+          Search
+        </button>
       </div>
     </div>
   );

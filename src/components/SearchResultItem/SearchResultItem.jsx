@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./searchresultitem.scss";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 
 function SearchResultItem({ data }) {
+  const { city } = useContext(SearchContext);
+  function generateFeedback(rating) {
+    if (rating >= 9.0 && rating < 10.0) {
+      return "Exceptional";
+    } else if (rating >= 8.0 && rating < 9.0) {
+      return "Superb";
+    } else if (rating >= 7.0 && rating < 8.0) {
+      return "Very good";
+    } else {
+      return "Average";
+    }
+  }
   return (
     <div className="searchResultItem">
       <div className="total_properties">
-        <h1>Dubai: {data.length} properties found</h1>
+        <h1>
+          {city ? `${city.charAt(0).toUpperCase() + city.slice(1)} :` : "Total"}{" "}
+          {data.length} properties found
+        </h1>
       </div>
-      {data.map((item) => (
-        <div className="searchResultItem_container">
+      {data.map((item, index) => (
+        <div className="searchResultItem_container" key={index}>
           <div className="searchResult_left">
-            <img src={item.image} alt="" />
+            <img src={item.image[0].url} alt="" />
           </div>
           <div className="searchResult_middle">
             <Link
-              to="/hotels/123"
+              to={`/hotels/${item._id}`}
               style={{ textDecoration: "none", color: "#1363df" }}
             >
-              <p className="title">{item.title}</p>
+              <p className="title">{item.name}</p>
             </Link>
             <p className="distance">{item.distance}</p>
             <p
@@ -32,7 +48,7 @@ function SearchResultItem({ data }) {
                 ? "Free airport taxi"
                 : "Paid taxi available"}
             </p>
-            <p className="description">{item.description}</p>
+            <p className="description">{item.title}</p>
             <div className="feature_container">
               {item.features.map((feature, index) => (
                 <>
@@ -68,14 +84,14 @@ function SearchResultItem({ data }) {
           <div className="searchResult_right">
             <div className="rating_container">
               <div className="rating">
-                <p className="feedback">{item.feedback}</p>
+                <p className="feedback">{generateFeedback(item.rating)}</p>
                 <p className="rating_number">{item.rating}</p>
               </div>
             </div>
             <div className="price_container">
               <div className="price">
-                <p>₹ {item.price}</p>
-                <p class="disclaimer">Includes taxes and other charges</p>
+                <p>$ {item.cheapestPrice}</p>
+                <p className="disclaimer">Includes taxes and other charges</p>
               </div>
               <button>See availability</button>
             </div>

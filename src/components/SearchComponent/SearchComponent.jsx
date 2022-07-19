@@ -5,32 +5,25 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { useLocation } from "react-router-dom";
 import PeopleIcon from "@mui/icons-material/People";
 import { useDetectClickOutside } from "../../hooks/useDetectClick";
-function SearchComponent() {
+import { useEffect } from "react";
+function SearchComponent({ handleSearch, resetSearch }) {
+  const location = useLocation();
   const dateRef = useDetectClickOutside(() => setOpenDate(false));
   const optionRef = useDetectClickOutside(() => setOpenOptions(false));
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-  const [options, setOptions] = useState([
-    {
-      title: "Adult",
-      count: 2,
-    },
-    {
-      title: "Children",
-      count: 0,
-    },
-    {
-      title: "Room",
-      count: 1,
-    },
-  ]);
+  const [destination, setDestination] = useState(location.state.destination);
+  const [date, setDate] = useState(location.state.date);
+  const [options, setOptions] = useState(location.state.options);
+  const [openDate, setOpenDate] = useState(false);
+  const [openOptions, setOpenOptions] = useState(false);
+  const [params, setParams] = useState({
+    city: location.state.destination,
+    date: location.state.date,
+    options: location.state.options,
+  });
+
   function increaseCount(title) {
     setOptions(
       options.map((item) =>
@@ -45,8 +38,40 @@ function SearchComponent() {
       )
     );
   }
-  const [openDate, setOpenDate] = useState(false);
-  const [openOptions, setOpenOptions] = useState(false);
+  function reset(params) {
+    setDestination("");
+    setDate([
+      {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: "selection",
+      },
+    ]);
+    setOptions([
+      {
+        title: "Adult",
+        count: 2,
+      },
+      {
+        title: "Children",
+        count: 0,
+      },
+      {
+        title: "Room",
+        count: 1,
+      },
+    ]);
+    resetSearch(params);
+  }
+
+  useEffect(() => {
+    setParams({
+      city: destination.toLowerCase(),
+      date: date,
+      options: options,
+    });
+  }, [destination, date, options]);
+
   return (
     <div className="search">
       <div className="search_container">
@@ -54,7 +79,14 @@ function SearchComponent() {
         <div className="search_items">
           <div className="search_item">
             <p className="item_title">Destination</p>
-            <input type="text" className="search_input" />
+            <input
+              value={destination}
+              type="text"
+              className="search_input"
+              onChange={(e) => {
+                setDestination(e.target.value);
+              }}
+            />
           </div>
           <div className="search_item" ref={dateRef}>
             <p className="item_title">Check in - Check out date</p>
@@ -63,6 +95,9 @@ function SearchComponent() {
               <span
                 className="searchBoxText"
                 onClick={() => setOpenDate(!openDate)}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
               >
                 {`${format(date[0].startDate, "MM/dd/yyyy")} - ${format(
                   date[0].endDate,
@@ -89,12 +124,15 @@ function SearchComponent() {
                 onClick={() => {
                   setOpenOptions(!openOptions);
                 }}
+                onChange={(e) => {
+                  setOptions(e.target.value);
+                }}
               >{`${options[0].count} adult | ${options[1].count} children | ${options[2].count} room`}</span>
             </div>
             {openOptions ? (
               <div className="optionSelector">
-                {options.map((item) => (
-                  <div className="optionSelectorItem">
+                {options.map((item, index) => (
+                  <div className="optionSelectorItem" key={index}>
                     <div className="optionSelectorItem_left">
                       <p>{item.title}</p>
                     </div>
@@ -121,8 +159,16 @@ function SearchComponent() {
               </div>
             ) : null}
           </div>
-          <div className="search_item">
-            <button className="searchButton">Search</button>
+          <div className="search_item button">
+            <button
+              className="searchButton"
+              onClick={() => handleSearch(params)}
+            >
+              Search
+            </button>
+            <button className="searchButton" onClick={() => reset(params)}>
+              Reset
+            </button>
           </div>
         </div>
       </div>

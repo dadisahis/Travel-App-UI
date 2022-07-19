@@ -8,8 +8,12 @@ import HailOutlinedIcon from "@mui/icons-material/HailOutlined";
 import { useState } from "react";
 import "./header.scss";
 import SearchBox from "../SearchBox/SearchBox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext, INITIAL_STATE } from "../../context/SearchContext";
 function Header({ type }) {
+  const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
   const navbar__options = [
     {
       id: 1,
@@ -52,7 +56,6 @@ function Header({ type }) {
       )
     );
   }
-  console.log(optionData);
   return (
     <div className="header">
       <div
@@ -62,23 +65,27 @@ function Header({ type }) {
       >
         <div className="header__items">
           {optionData.map((item) => (
-            <Link
-              // to={`/${item.title.toLowerCase()}`}
-              to="/hotels"
-              style={{ textDecoration: "none" }}
+            <div
+              key={item.id}
+              className="header__item"
+              onClick={() => {
+                handleActive(item.id);
+                dispatch({ type: "RESET_SEARCH" });
+                navigate("/hotels", {
+                  state: {
+                    destination: INITIAL_STATE.city,
+                    date: INITIAL_STATE.date,
+                    options: INITIAL_STATE.options,
+                  },
+                });
+              }}
             >
-              <div
-                key={item.id}
-                className="header__item"
-                onClick={() => handleActive(item.id)}
-              >
-                <NavBarItem
-                  title={item.title}
-                  Icon={item.icon}
-                  isActive={item.isActive}
-                />
-              </div>
-            </Link>
+              <NavBarItem
+                title={item.title}
+                Icon={item.icon}
+                isActive={item.isActive}
+              />
+            </div>
           ))}
         </div>
         {type === "home" ? (

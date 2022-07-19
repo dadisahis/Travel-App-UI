@@ -1,4 +1,4 @@
-.propertyList {
+.featured {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   top: 70px;
   .title_container {
     width: 75%;
-    .propertyList_title {
+    .featured_title {
       color: white;
       font-weight: 700;
       // font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -15,7 +15,7 @@
       //   sans-serif;
     }
   }
-  .propertyList_container {
+  .featured_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@
     max-width: 1024px;
     margin: 10px 0px 15px 0px;
 
-    .propertyList_item {
+    .featured_item {
       padding: 10px;
       background-color: white;
       margin: 5px;
@@ -34,33 +34,17 @@
       -moz-box-shadow: 7px 6px 5px 3px rgba(0, 0, 0, 0.2);
       transition: width 1s, height 1s, transform 1s;
 
-      .propertyList_img {
+      .featured_img {
+        height: 240px;
+        width: 230px;
         border-radius: 5px;
       }
-      .propertyList_ratingdata {
-        display: flex;
-        align-items: center;
-        p {
-          padding: 5px;
-          color: gray;
-        }
-        .rating {
-          background-color: #3ec70b;
-          color: white;
-          font-weight: 800;
-          border-radius: 5px;
-        }
-        .feedback {
-          font-weight: 800;
-          color: black;
-          font-size: 11.5px;
-        }
-        .review_count {
-          color: gray;
-        }
-      }
-      .propertyList_titles {
+      .featured_titles {
         color: black;
+        position: absolute;
+        bottom: 50px;
+        padding: 0px 5px;
+        color: white;
         h1 {
           font-weight: 600;
           font-size: 25px;
@@ -68,18 +52,8 @@
         h2 {
           font-weight: 600;
           font-size: 15px;
-          color: gray;
-          text-transform: capitalize;
         }
       }
-      .propertyList_price {
-        h2 {
-          font-size: 18px;
-        }
-      }
-    }
-    .propertyList_item:hover {
-      transform: scale(1.08);
     }
   }
 }

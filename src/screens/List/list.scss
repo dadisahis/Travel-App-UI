@@ -1,9 +1,14 @@
 .list {
-  background-color: #ffcc8f;
-  overflow: auto;
+  background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  background-repeat: no-repeat;
+  height: auto;
+  .list_top {
+    background: linear-gradient(to right, rgb(173, 83, 137), rgb(60, 16, 83));
+  }
   .list_content {
     display: flex;
     justify-content: center;
+
     margin-top: 20px;
     .list_wrapper {
       display: flex;

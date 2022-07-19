@@ -4,8 +4,8 @@
   align-items: center;
   padding: 10px;
   height: 350px;
-  background-color: #b3541e;
   width: 250px;
+  background: #5f5dbd;
   border-radius: 5px;
   .search_container {
     .search_title {
@@ -49,13 +49,21 @@
           }
         }
         .searchButton {
-          width: 230px;
+          width: 110px;
           height: 40px;
           padding: 5px;
           border-radius: 5px;
+          margin: 0px 3px;
           border: none;
           background-color: #362222;
           color: white;
+          cursor: pointer;
+        }
+        &.button {
+          flex-direction: row;
+        }
+        .searchButton:hover {
+          background-color: #362222bb;
         }
         .daterange {
           position: absolute;

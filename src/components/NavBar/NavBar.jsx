@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import UserInfo from "../UserInfo/UserInfo";
 
 function NavBar() {
+  const { user, loading, error, dispatch } = useContext(AuthContext);
   return (
     <div className="navbar">
       <div className="navbar__container">
@@ -32,12 +35,18 @@ function NavBar() {
             <div className="item">
               <div className="button property">List your Property</div>
             </div>
-            <div className="item">
-              <div className="button">Register</div>
-            </div>
-            <div className="item">
-              <div className="button">Sign In</div>
-            </div>
+            {user ? (
+              <UserInfo />
+            ) : (
+              <>
+                <div className="item">
+                  <div className="button">Register</div>
+                </div>
+                <div className="item">
+                  <div className="button">Sign In</div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

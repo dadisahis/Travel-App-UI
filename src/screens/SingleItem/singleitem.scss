@@ -1,6 +1,10 @@
 .singleitem {
-  background-color: #ffcc8f;
-  overflow: auto;
+  background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  background-repeat: no-repeat;
+  height: auto;
+  .singleitem_top {
+    background: linear-gradient(to right, rgb(173, 83, 137), rgb(60, 16, 83));
+  }
   .singleitem_content {
     display: flex;
     justify-content: center;
@@ -24,13 +28,11 @@
               "Helvetica Neue", sans-serif;
             font-weight: 650;
             color: white;
-            text-shadow: 2px 2px gray;
             font-size: 45px;
           }
           .location {
             display: flex;
             align-items: center;
-            color: gray;
             font-size: 15px;
           }
         }
@@ -77,14 +79,15 @@
         display: flex;
         align-items: center;
         margin-top: 10px;
-        background-color: white;
         padding: 5px 10px;
         border-radius: 5px;
+        color: white;
         .hotel_details {
           width: 75%;
         }
         .hotel_card {
           background-color: #1365df2b;
+
           border-radius: 5px;
           padding: 10px;
           width: 25%;
@@ -95,7 +98,7 @@
           align-items: center;
           p {
             padding: 5px 0px;
-            color: black;
+            color: white;
           }
           button {
             margin: 5px 0px;

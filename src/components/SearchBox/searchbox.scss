@@ -38,10 +38,13 @@
       position: absolute;
       top: 45px;
       left: 5px;
+      z-index: 999;
     }
     .optionSelector {
       position: absolute;
+      z-index: 999;
       top: 45px;
+      background-color: white;
       left: 5px;
       width: 110%;
       height: 150px;
