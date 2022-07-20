@@ -6,23 +6,34 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import EmailList from "../../components/EmailList/EmailList";
 import { useState } from "react";
 import { getHotelByID } from "../../api/api";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/Reserve/Reserve";
 function SingleItem() {
   const location = useLocation();
+  const navigate = useNavigate();
   const id = location.pathname.split("/")[2];
   const [hotelData, setHotelData] = useState(null);
-  const [totalDays, setTotalDays] = useState(0);
+  const [openModel, setOpenModal] = useState(false);
   const { date, options } = useContext(SearchContext);
+  const { user, dispatch } = useContext(AuthContext);
   function getTotalDays(endDate, startDate) {
-    console.log(endDate, startDate);
     const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
     const dayDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
     return dayDiff;
   }
   const dayDiff = getTotalDays(date[0].endDate, date[0].startDate);
+
+  function handleClick() {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  }
 
   function getHotel(id) {
     const hotel_data = getHotelByID(id);
@@ -33,8 +44,6 @@ function SingleItem() {
   useEffect(() => {
     getHotel(id);
   }, []);
-
-  console.log(hotelData);
   return (
     <div className="singleitem">
       <div className="singleitem_top">
@@ -94,7 +103,9 @@ function SingleItem() {
                     </b>{" "}
                     ({dayDiff} nights)
                   </p>
-                  <button>Reserve or Book Now</button>
+                  <button onClick={() => handleClick()}>
+                    Reserve or Book Now
+                  </button>
                 </div>
               </div>
             </div>
@@ -102,6 +113,7 @@ function SingleItem() {
         ) : null}
       </div>
       <EmailList />
+      {openModel ? <Reserve setOpen={setOpenModal} hotelId={id} /> : null}
     </div>
   );
 }

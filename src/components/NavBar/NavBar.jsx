@@ -42,9 +42,11 @@ function NavBar() {
                 <div className="item">
                   <div className="button">Register</div>
                 </div>
-                <div className="item">
-                  <div className="button">Sign In</div>
-                </div>
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <div className="item">
+                    <div className="button">Sign In</div>
+                  </div>
+                </Link>
               </>
             )}
           </div>

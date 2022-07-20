@@ -42,3 +42,18 @@ export const loginUser = async (payload) => {
   );
   return data.data;
 };
+
+export const getHotelRooms = async (id) => {
+  const data = await axios.get(
+    process.env.REACT_APP_API_URL + `/hotels/room/${id}`
+  );
+  return data.data;
+};
+
+export const updateRoomAvailability = async (id, body) => {
+  const data = await axios.put(
+    process.env.REACT_APP_API_URL + `/rooms/availability/${id}`,
+    body
+  );
+  return data.data;
+};
