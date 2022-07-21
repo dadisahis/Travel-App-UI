@@ -56,6 +56,16 @@ function Header({ type }) {
       )
     );
   }
+  function handleClick() {
+    dispatch({ type: "RESET_SEARCH" });
+    navigate("/hotels", {
+      state: {
+        destination: INITIAL_STATE.city,
+        date: INITIAL_STATE.date,
+        options: INITIAL_STATE.options,
+      },
+    });
+  }
   return (
     <div className="header">
       <div
@@ -70,14 +80,7 @@ function Header({ type }) {
               className="header__item"
               onClick={() => {
                 handleActive(item.id);
-                dispatch({ type: "RESET_SEARCH" });
-                navigate("/hotels", {
-                  state: {
-                    destination: INITIAL_STATE.city,
-                    date: INITIAL_STATE.date,
-                    options: INITIAL_STATE.options,
-                  },
-                });
+                handleClick();
               }}
             >
               <NavBarItem
